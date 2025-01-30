@@ -3,7 +3,7 @@ export const resolvers = {
 
 
     Query: {
-        hello: ():string => "world",
+        hello: ():Promise<string> => "world",
 
 
     }

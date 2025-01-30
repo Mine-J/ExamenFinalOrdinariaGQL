@@ -16,8 +16,8 @@ await mongoClient.connect();
 
 console.info("Connected to MongoDB");
 
-//const mongoDB = mongoClient.db("ExamenOrdinarioGQL");
-//const  = mongoDB.collection<>("");
+const mongoDB = mongoClient.db("ExamenOrdinarioGQL");
+const  = mongoDB.collection<>("");
 
 const server = new ApolloServer({
   typeDefs: schema,
@@ -25,7 +25,7 @@ const server = new ApolloServer({
 });
 
 const { url } = await startStandaloneServer(server, {
-  //context: async () => ({  }),
+  context: async () => ({  }),
 });
 
 

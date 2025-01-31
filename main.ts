@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { schema } from "./schema.ts";
 import { MongoClient } from "mongodb";
-import {  } from "./types.ts";
+import { restaurantesModel } from "./types.ts";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { resolvers } from "./resolvers.ts";
 
@@ -17,7 +17,7 @@ await mongoClient.connect();
 console.info("Connected to MongoDB");
 
 const mongoDB = mongoClient.db("ExamenOrdinarioGQL");
-const  = mongoDB.collection<>("");
+const restaurantesCollection = mongoDB.collection<restaurantesModel>("restaurantes");
 
 const server = new ApolloServer({
   typeDefs: schema,
@@ -25,7 +25,7 @@ const server = new ApolloServer({
 });
 
 const { url } = await startStandaloneServer(server, {
-  context: async () => ({  }),
+  context: async () => ({ restaurantesCollection }),
 });
 
 
